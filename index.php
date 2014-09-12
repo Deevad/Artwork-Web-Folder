@@ -59,8 +59,7 @@ $ProjectName = basename($path);
 	$pathtoscan = "";
 
 // Get and recognize content
-	$texts = glob($pathtoscan . '*.{md}',GLOB_BRACE);
-    
+
     // images allowed to display :
 	$images = glob($pathtoscan . '*.{jpg,gif,png,jpeg}',GLOB_BRACE);
     
