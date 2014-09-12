@@ -20,9 +20,18 @@ Your folder is now ready to list images and files.
 
 ## To know :
 
-list of picture format to be display : jpg,gif,png,jpeg
-list of downloadable files : zip,txt,psd,pdf,avi,mpeg,tar,7z,odt,doc,docx,ppt,ora
+#### List of picture format to be display :
+
+jpg,gif,png,jpeg
+ 
+#### List of downloadable files : 
+
+zip,txt,psd,pdf,avi,mpeg,tar,7z,odt,doc,docx,ppt,ora
+
+#### Privacy :
 
 Possibility to make the page private, via a secret path name, and uncommenting line 49, to block access of search engine and bots. 
+
+#### Listing order :
 
 Files are listed depending alphabetical order, first pictures then files ( to download, etc ). you can use number prefix to sort them manually ( eg: 01-file.jpg, 02-file.jpg etc... or 20140815-wip.png, 20140920-wip.png ). Number are removed automatically to make a clean title to the picture. 
