@@ -66,7 +66,7 @@ $ProjectName = basename($path);
     // file allowed to be scan :
 	$documents = glob($pathtoscan . '*.{zip,txt,psd,pdf,avi,mpeg,tar,7z,odt,doc,docx,ppt,ora}',GLOB_BRACE);
     
-	$allcontents = array_merge($texts, $images, $documents); 
+	$allcontents = array_merge($images, $documents);
 
 // Count : return how many number of each stuff we grabbed previously
 	$numberoftexts  = count($texts);
