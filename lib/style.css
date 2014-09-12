@@ -1,0 +1,156 @@
+/* 
+   Artwork-Web-Folder CSS by David Revoy
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #222 url("img/background-texture.png") repeat;
+}
+
+body {
+  color: #fff;
+  font-family: Sans, arial, sans-serif;
+  margin: 0 auto 0;
+  font-size: 14px;
+}
+
+
+h1 { 
+  text-align: center;
+  font: 36px Sans, arial, sans-serif;
+  text-shadow: 2px 1px 1px #000;
+  margin: 10px 0 20px 0;
+  text-transform:capitalize;
+  }
+  
+p { 
+  margin: 0 0 1em 0;
+  }
+
+h2 { 
+  font-size: 18px;
+  }
+
+a {
+  text-decoration: none;
+  color: #999;
+  }
+
+a:hover {
+  color: #0AF;
+  }
+
+ul {
+    padding: 0 0 0 20px;
+    margin: 5px 0 0 20px;
+  }
+
+#global{
+
+}
+
+.imagecontainer{
+	text-align: center;
+	margin: 0 auto 20px auto;
+	padding: 20px 0 5px 0;
+    max-width: 100%;
+}
+
+.imagecontainer h2{
+	text-align: center;
+    text-transform:capitalize;
+}
+
+a h2{
+	color: #FFF;
+}
+
+.imagecontainer img {
+    display: block;
+    padding: 0 0 25px 0;
+    max-width: 100%;
+}
+.imagecontainer div {
+    position: relative;
+    display: inline-block;
+    /* ie6/7 support */
+    *display: inline;
+    zoom: 1;
+    max-width: 100%;
+    background: rgba(0,0,0,.2);
+}
+.imagecontainer .titre {
+	color:  #999;
+	text-align: left;
+    position: absolute;
+    left: 10px;
+    bottom: 6px;
+    width: 100%;
+}
+
+.date{
+  color: #999;
+}
+
+.imagecontainer .download {
+	text-align: right;
+    position: absolute;
+    right: 10px;
+    bottom: 3px;
+    width: 300px;
+    padding: 0 30px 2px 0 ;
+    background: transparent url('img/icon_download.png') no-repeat top right;
+}
+
+.imageanchor {
+    padding: 0 15px 0 0;
+    background: transparent url('img/icon_link.png') no-repeat top right;
+}
+
+.filecontainerpdf{
+  position: relative;
+  text-align: left;
+  font-size: 17px;
+  background: rgba(0,0,0,.3) url('img/file_pdf.png') no-repeat 22px 28px;
+  margin: 0 auto 20px auto;
+  width: 95%;
+  max-width: 1030px;
+  padding: 20px 20px 20px 90px;
+}
+
+.filecontainerzip{
+  position: relative;
+  text-align: left;
+  font-size: 17px;
+  background: rgba(0,0,0,.3) url('img/file_zip.png') no-repeat 22px 28px;
+  margin: 0 auto 20px auto;
+  width: 95%;
+  max-width: 1030px;
+  padding: 20px 20px 20px 90px;
+}
+
+.filecontainer{
+  text-align: left;
+  font-size: 17px;
+  background: rgba(0,0,0,.3) url('img/file_unknown.png') no-repeat 22px 28px;
+  margin: 0 auto 20px auto;
+  width: 95%;
+  max-width: 1030px;
+  padding: 20px 20px 20px 90px;
+}
+
+#footer{
+  text-align: center;
+
+}
+#footer .credit, #footer .credit a {
+  margin: 50px auto 0 auto;
+  text-align: center;
+  font-size: 0.2em;
+  color: #777;
+}
+
