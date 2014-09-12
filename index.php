@@ -71,7 +71,7 @@ $ProjectName = basename($path);
 // Count : return how many number of each stuff we grabbed previously
 	$numberofimages  = count($images);
 	$numberofdocuments  = count($documents);
-	$numberofall = $numberoftexts + $numberofimages + $numberofdocuments;
+	$numberofall = $numberofimages + $numberofdocuments;
 	
 // Sort all contents alphabetical
     sort($allcontents);
