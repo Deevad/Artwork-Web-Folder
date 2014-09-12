@@ -12,6 +12,7 @@ A php file listing and serving picture, zip, pdf inside a folder. Require a php 
 * link (auto scroll in the page ) to the picture available.
 * Display date, file weight, image size
 * Generate page title and title for the files automatically.
+* Responsive, image are resized for smartphone, and tablet with smaller screens. 
 
 ## Usage :
 
