@@ -69,7 +69,6 @@ $ProjectName = basename($path);
 	$allcontents = array_merge($images, $documents);
 
 // Count : return how many number of each stuff we grabbed previously
-	$numberoftexts  = count($texts);
 	$numberofimages  = count($images);
 	$numberofdocuments  = count($documents);
 	$numberofall = $numberoftexts + $numberofimages + $numberofdocuments;
