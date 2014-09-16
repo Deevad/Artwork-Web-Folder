@@ -56,8 +56,19 @@ $ProjectName = basename($path);
 <div id="global">
 
 <?php
+
 // Path of the folder to scan for images or files ( empty = actual )
-	$pathtoscan = "";
+ $pathtoscan = "";
+
+// we check if a subfolder variable is sent
+    if( $_GET ) {
+        // we got one. Let do something with it : ( test with index.php?subfolder=sketches )
+        if( $_GET["subfolder"] ) {
+        echo "You want to list ". $_GET['subfolder']. "<br />";
+        $pathtoscan = $_GET['subfolder']."/";
+      }
+    }
+
 
 // Get and recognize content
 	$texts = glob($pathtoscan . '*.{md}',GLOB_BRACE);
@@ -207,7 +218,7 @@ function display_markdown($markdownfilename){
 
 // Subdirectories first
 // --------------------
-
+    
 	if ($numberofsubdirectories !== 0 ) {
         
         // Root folders, TODO : might appear later only if a user visit a subfolder.
@@ -219,7 +230,7 @@ function display_markdown($markdownfilename){
             // exclude directories named lib
             if ($subdirectories !== "lib") 
             {					
-				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
+				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$CurrentFolderURL.'index.php?subfolder='.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
 				echo '<b>'.$subdirectories.'</b></a></div>'."\n"."\n";		
             }
 	}
