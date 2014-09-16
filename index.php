@@ -210,6 +210,7 @@ function display_markdown($markdownfilename){
 
 	if ($numberofsubdirectories !== 0 ) {
         
+        // Root folders, TODO : might appear later only if a user visit a subfolder.
         echo '<div class="folder" name="main folder" ><a href="'.$CurrentFolderURL.'index.php" title="main folder" alt="main folder" >'."\n";
 				echo '<b>/</b></a></div>'."\n"."\n";		
         
