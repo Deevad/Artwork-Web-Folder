@@ -64,7 +64,7 @@ $ProjectName = basename($path);
     if( $_GET ) {
         // we got one. Let do something with it : ( test with index.php?subfolder=sketches )
         if( $_GET["subfolder"] ) {
-        echo "You want to list ". $_GET['subfolder']. "<br />";
+        echo "<!-- Debug Subfolder : ". $_GET['subfolder']. "-->"."\n";
         $pathtoscan = $_GET['subfolder']."/";
       }
     }
