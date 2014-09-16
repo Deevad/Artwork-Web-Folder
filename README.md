@@ -38,7 +38,6 @@ Possibility to make the page private, via a secret path name, and uncommenting l
 Files are listed depending alphabetical order, first pictures then files ( to download, etc ). you can use number prefix to sort them manually ( eg: 01-file.jpg, 02-file.jpg etc... or 20140815-wip.png, 20140920-wip.png ). Number are removed automatically to make a clean title to the picture. 
 
 ## Troubles/Issues :
-most of the issues can come from this three point :
-* Timthumb need a cache folder , and correct permission. By default I setup it to use default linux /tmp/ folder
-* Server need PHP5
-* permissions
+Most of the issues can come from Timthumb, the librarie I use for generating the thumbnail : 
+Read more info about installation recommendation here : [http://www.binarymoon.co.uk/2010/11/timthumb-hints-tips/](http://www.binarymoon.co.uk/2010/11/timthumb-hints-tips/)
+
