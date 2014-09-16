@@ -38,6 +38,10 @@ Possibility to make the page private, via a secret path name, and uncommenting l
 Files are listed depending alphabetical order, first pictures then files ( to download, etc ). you can use number prefix to sort them manually ( eg: 01-file.jpg, 02-file.jpg etc... or 20140815-wip.png, 20140920-wip.png ). Number are removed automatically to make a clean title to the picture. 
 
 ## Troubles/Issues :
-Most of the issues can come from Timthumb, the librarie I use for generating the thumbnail : 
+
+Most of the issues can come from *Timthumb*, the librarie I use for generating the thumbnail.
+
+I ship a modified version of timthumb ( configuration changed only ) to use the /tmp/ folder of the Linux server as a place to cache images. With this method, I avoid having to download a cache folder when I backup my server ; but If this method doesn't work on your server ; you probably will prefer to setup manually a cache folder (l.40 on lib/timthumb.php ). You can see how the default timthumb last SVN file is setup here : [https://code.google.com/p/timthumb/source/browse/trunk/timthumb.php](https://code.google.com/p/timthumb/source/browse/trunk/timthumb.php) ; using './cache' . If you decide to use a cache folder, be sure to apply a 777 permission to it ( or 755 should be suffisent too ). Other modifications I made on the version I ship : max imagesize, max imageweight and a better sharpening filter in my opinion.
+
 Read more info about installation recommendation here : [http://www.binarymoon.co.uk/2010/11/timthumb-hints-tips/](http://www.binarymoon.co.uk/2010/11/timthumb-hints-tips/)
 
