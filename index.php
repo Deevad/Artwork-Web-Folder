@@ -216,8 +216,15 @@ function display_markdown($markdownfilename){
 // SCAN ///
 // ==== ///
 
-// Subdirectories first
-// --------------------
+// Generate an Auto title
+// ----------------------
+$removethisstring = array ( '/[^%a-zA-Z]/' );
+$replacewiththis = array (' ');
+$cleanProjectName = preg_replace( $removethisstring , $replacewiththis , $ProjectName);
+echo '<h1>'.$cleanProjectName.'</h1>';
+
+// Subdirectories
+// --------------
     
 	if ($numberofsubdirectories !== 0 ) {
         
@@ -236,12 +243,7 @@ function display_markdown($markdownfilename){
 	}
 }
 
-// Generate an Auto title
-// ----------------------
-$removethisstring = array ( '/[^%a-zA-Z]/' );
-$replacewiththis = array (' ');
-$cleanProjectName = preg_replace( $removethisstring , $replacewiththis , $ProjectName);
-echo '<h1>'.$cleanProjectName.'</h1>';
+
 
 // Then scan files
 // ---------------
