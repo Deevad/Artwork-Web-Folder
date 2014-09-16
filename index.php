@@ -209,6 +209,10 @@ function display_markdown($markdownfilename){
 // --------------------
 
 	if ($numberofsubdirectories !== 0 ) {
+        
+        echo '<div class="folder" name="main folder" ><a href="'.$CurrentFolderURL.'index.php" title="main folder" alt="main folder" >'."\n";
+				echo '<b>/</b></a></div>'."\n"."\n";		
+        
 	    foreach($subdirectories as $subdirectories) {
             
             // exclude directories named lib
