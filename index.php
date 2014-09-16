@@ -171,10 +171,10 @@ function display_markdown($markdownfilename){
     $replacewiththis = array ('' , '' );
     $author_markdown = preg_replace( $removethisstring , $replacewiththis , $markdownfilename);
     
-    //debug 
-    echo $PathToLib."markdown.php";
+    // Debug for Ctrl+U in htlm code again
+    echo "<!-- Markdown lib path debug : ".$PathToLib."markdown.php -->";
     
-    // Get markdown.php lib
+    // Get markdown.php lib the dirty way : TODO; make it global as on the header, in progress
     $markdownlibpath = "lib/markdown.php";
 	include_once $markdownlibpath;
 	
@@ -210,8 +210,13 @@ function display_markdown($markdownfilename){
 
 	if ($numberofsubdirectories !== 0 ) {
 	    foreach($subdirectories as $subdirectories) {
+            
+            // exclude directories named lib
+            if ($subdirectories !== "lib") 
+            {					
 				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
 				echo '<b>'.$subdirectories.'</b></a></div>'."\n"."\n";		
+            }
 	}
 }
 
