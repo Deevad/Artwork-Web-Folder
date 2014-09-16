@@ -1,6 +1,7 @@
 <?php
 /**
- * Artwork-Web-Folder by David Revoy
+ * Artwork-Web-Folder by David Revoy 
+ * UNSTABLE VERSION -- use at your own risk
  * A php file listing and serving picture, zip, pdf inside a folder. 
  * Require a php server, and a FTP client to upload files to the folder.
  *
@@ -59,27 +60,27 @@ $ProjectName = basename($path);
 	$pathtoscan = "";
 
 // Get and recognize content
-
-    // images allowed to display :
+	$texts = glob($pathtoscan . '*.{md}',GLOB_BRACE);
 	$images = glob($pathtoscan . '*.{jpg,gif,png,jpeg}',GLOB_BRACE);
-    
-    // file allowed to be scan :
 	$documents = glob($pathtoscan . '*.{zip,txt,psd,pdf,avi,mpeg,tar,7z,odt,doc,docx,ppt,ora}',GLOB_BRACE);
-    
-	$allcontents = array_merge($images, $documents);
+	$allcontents = array_merge($texts, $images, $documents); 
+	$subdirectories = array_filter(glob('*'), 'is_dir');
 
 // Count : return how many number of each stuff we grabbed previously
+	$numberoftexts  = count($texts);
 	$numberofimages  = count($images);
 	$numberofdocuments  = count($documents);
-	$numberofall = $numberofimages + $numberofdocuments;
+	$numberofsubdirectories  = count($subdirectories);
+	$numberofall = $numberoftexts + $numberofimages + $numberofdocuments + $numberofsubdirectories;
 	
 // Sort all contents alphabetical
     sort($allcontents);
 
 // Debug infos ( hidden for "view source" Ctrl+U only ):
 	echo '<!-- Debug Infos '."\n";
-	echo ''.$numberofimages.' image(s) found'."\n";
-	echo ''.$numberofdocuments.' documents found'."\n";
+	echo ''.$numberoftexts.' text(s) available'."\n";
+	echo ''.$numberofimages.' image(s) available'."\n";
+	echo ''.$numberofdocuments.' file(s) available'."\n";
 	echo ''.$numberofall.' total entrie(s) found'."\n";
 	echo 'Current Folder URL : '.$CurrentFolderURL.''."\n";
 	echo 'Path to lib folder : '.$PathToLib.''."\n";
@@ -159,12 +160,63 @@ function display_document($documentfilename){
 }
 
 
+// Display Markdown
+// ----------------
+function display_markdown($markdownfilename){
+    
+    global $PathToLib;
+    
+    // Get clean file name
+    $removethisstring = array ( '/\.md/i' , '/[^%a-zA-Z]/'  );
+    $replacewiththis = array ('' , '' );
+    $author_markdown = preg_replace( $removethisstring , $replacewiththis , $markdownfilename);
+    
+    //debug 
+    echo $PathToLib."markdown.php";
+    
+    // Get markdown.php lib
+    $markdownlibpath = "lib/markdown.php";
+	include_once $markdownlibpath;
+	
+	// Convert markdown to HTML
+	$markdownContent = file_get_contents($markdownfilename);
+	$markdownHTML = Markdown($markdownContent);
+
+    // [TO-DO] when edit is ok : different style depending author
+	switch($author_markdown)
+            {               
+                // No frame text
+                case "manifesto": case "readme": case "info": case "header":
+                echo '<div class="markdowncontainermanifesto" name="'.$markdownfilename.'" >'."\n";
+                echo ''.$markdownHTML.' </div>'."\n"."\n";
+                break;
+                
+                // Default
+                default:
+                echo '<div class="markdowncontainer" name="'.$markdownfilename.'" >'."\n";
+                echo ''.$markdownHTML.''."\n"."\n";
+                echo '<div class="markdowndate">' . date ("d M Y", filemtime($markdownfilename)) . '<a href="'.$markdownfilename.'" title="'.$markdownfilename.'" alt=" '.$markdownfilename.'" ></a></div></div>';
+                break;
+            }
+
+}
+
 // ==== ///
 // SCAN ///
 // ==== ///
 
-// Generate an Auto main title
-// ----------------------------
+// Subdirectories first
+// --------------------
+
+	if ($numberofsubdirectories !== 0 ) {
+	    foreach($subdirectories as $subdirectories) {
+				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
+				echo '<b>'.$subdirectories.'</b></a></div>'."\n"."\n";		
+	}
+}
+
+// Generate an Auto title
+// ----------------------
 $removethisstring = array ( '/[^%a-zA-Z]/' );
 $replacewiththis = array (' ');
 $cleanProjectName = preg_replace( $removethisstring , $replacewiththis , $ProjectName);
@@ -179,6 +231,13 @@ echo '<h1>'.$cleanProjectName.'</h1>';
 
             switch($file_extension['extension'])
             {
+            
+                // Markdown
+                // ------           
+                case "md": case "txt":
+                display_markdown($content);
+                break;
+                
                 // Images
                 // ------
                 case "jpg": case "png": case "jpeg": case "gif":
