@@ -102,8 +102,8 @@ a h2{
   font-size: 20px;
   background: rgba(0,0,0,0.5) url('img/folder.png') no-repeat 22px 15px;
   border-bottom: 2px solid #000;
-  margin: 0 auto 20px auto;
-  width: 100%;
+  margin: 0 auto 0 auto;
+  max-width: 1000px;
   min-height: 40px;
   padding: 25px 20px 20px 90px;
 }
