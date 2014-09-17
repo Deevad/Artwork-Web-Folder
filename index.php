@@ -117,8 +117,8 @@ $ProjectName = basename($path);
 // -------------
 function display_image($imagefilename, $PathToLib, $CurrentFolderURL, $imagewidth, $imageheight){		
     // Clean titles
-    $removethisstring = array ( '/\.png/i' ,'/\.gif/i' ,'/\.jpg/i' , '[specifictexttoremoveonfilename]' , '/[^%a-zA-Z]/'  );
-    $replacewiththis = array ('' , '' , '' , '' , ' ' );
+    $removethisstring = array ( '/\.png/i' ,'/\.gif/i' ,'/\.jpg/i' , '[yourstringtoremovehere]' , '%^(/*)[^/]+%' , '/[^%a-zA-Z]/'  );
+    $replacewiththis = array ('' , '' , '' , '' , '' , ' ' );
     $titre_image = preg_replace( $removethisstring , $replacewiththis , $imagefilename);
 
     // Get images infos
