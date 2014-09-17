@@ -65,9 +65,18 @@ $ProjectName = basename($path);
     if( $_GET ) {
         // we got one. Let do something with it : ( test with index.php?subfolder=sketches )
         if( $_GET["subfolder"] ) {
-        echo "<!-- Debug Subfolder : ". $_GET['subfolder']. "-->"."\n";
-        $pathtoscan = $_GET['subfolder']."/";
-        $subfoldername = ", ".$_GET['subfolder'];
+        
+        // Security : prohibition of special character to avoid malicious code in the string :
+        $subfolder = $_GET["subfolder"];
+        $invalid_characters = array("$", "%", "#", "<", ">", "|");
+        $subfolder = str_replace($invalid_characters, "", $subfolder);
+        
+        // Debug on the Ctrl+U view of HTML 
+        echo "<!-- Debug Subfolder : ".$subfolder. "-->"."\n";
+        
+        // New sanified variable
+        $pathtoscan = $subfolder."/";
+        $subfoldername = ", ".$subfolder;
       }
     }
 
