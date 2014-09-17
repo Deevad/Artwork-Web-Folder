@@ -59,6 +59,7 @@ $ProjectName = basename($path);
 
 // Path of the folder to scan for images or files ( empty = actual )
  $pathtoscan = "";
+ $subfoldername = "";
 
 // we check if a subfolder variable is sent
     if( $_GET ) {
@@ -66,6 +67,7 @@ $ProjectName = basename($path);
         if( $_GET["subfolder"] ) {
         echo "<!-- Debug Subfolder : ". $_GET['subfolder']. "-->"."\n";
         $pathtoscan = $_GET['subfolder']."/";
+        $subfoldername = ", ".$_GET['subfolder'];
       }
     }
 
@@ -221,7 +223,7 @@ function display_markdown($markdownfilename){
 $removethisstring = array ( '/[^%a-zA-Z]/' );
 $replacewiththis = array (' ');
 $cleanProjectName = preg_replace( $removethisstring , $replacewiththis , $ProjectName);
-echo '<h1>'.$cleanProjectName.'</h1>';
+echo '<h1>'.$cleanProjectName.''.$subfoldername.'</h1>';
 
 // Subdirectories
 // --------------
@@ -232,18 +234,18 @@ echo '<h1>'.$cleanProjectName.'</h1>';
         if( $_GET ) {
         echo '<div class="folderup" name="main folder" ><a href="'.$CurrentFolderURL.'index.php" title="main folder" alt="main folder" >'."\n";
 				echo '<b>Back to main folder</b></a></div>'."\n"."\n";
-        }
+        } else {
         
-	    foreach($subdirectories as $subdirectories) {
+            foreach($subdirectories as $subdirectories) {
             
             // exclude directories named lib
-            if ($subdirectories !== "lib") 
-            {					
+                if ($subdirectories !== "lib" ) {					
 				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$CurrentFolderURL.'index.php?subfolder='.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
 				echo '<b>'.$subdirectories.'</b></a></div>'."\n"."\n";		
+                }
             }
-	}
-}
+        }   
+    }
 
 
 
