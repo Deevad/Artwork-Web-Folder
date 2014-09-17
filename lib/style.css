@@ -169,7 +169,7 @@ a h2{
 
 #footer{
   text-align: center;
-
+  margin: 40px 0 0 0;
 }
 #footer .credit, #footer .credit a {
   margin: 50px auto 0 auto;
