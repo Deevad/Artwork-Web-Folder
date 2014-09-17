@@ -119,8 +119,9 @@ function display_image($imagefilename, $PathToLib, $CurrentFolderURL, $imagewidt
 
     // Image container
     echo '<div class="imagecontainer"><a name="'.$imagefilename.'" href="#'.$imagefilename.'" ><h2>'.$titre_image.'</h2></a><div>'."\n";
-        // Lower res than width or height variables
-        if ( $width < $imagewidth ) 
+    
+        // If picture is smaller than required , display it directly ( no resize necessary = optimisation )
+        if ( $width < $imagewidth && $height < $imageheight) 
         {
             echo '<a name="'.$imagefilename.'" href="'.$imagefilename.'" ><img src="'.$imagefilename.'" title="'.$titre_image.'" alt="'.$imagefilename.'" ></a>';
         } else {
