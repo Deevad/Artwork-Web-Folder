@@ -120,25 +120,42 @@ function display_image($imagefilename, $PathToLib, $CurrentFolderURL, $imagewidt
     // Image container
     echo '<div class="imagecontainer"><a name="'.$imagefilename.'" href="#'.$imagefilename.'" ><h2>'.$titre_image.'</h2></a><div>'."\n";
     
+    
+    // If picture is small , it will affect presentation, so we propose a mini compact bottom bar in this case
+    if ( $width < 500 ) {
+        echo '<a name="'.$imagefilename.'" href="'.$imagefilename.'" ><img src="'.$imagefilename.'" title="'.$titre_image.'" alt="'.$imagefilename.'" ></a>';
+        
+        // Mini compact bottom bar :
+        echo '<span class="titre"><a href="#'.$imagefilename.'" ><span class="imageanchor"></span></a><span class="date"> ' . date ("j/m/y", filemtime($imagefilename)) . '</span></span> '."\n";
+        echo '<a href="'.$CurrentFolderURL.''.$imagefilename.'" title="'.$imagefilename.'" alt=" '.$imagefilename.'" ><span class="download">'.$width.'x'.$height.'px , '.round($imagefileweight, 2).'MB</span></a>'."\n";
+        echo '</div></div>'."\n"."\n";
+        
+    } else {
+    
         // If picture is smaller than required , display it directly ( no resize necessary = optimisation )
-        if ( $width < $imagewidth && $height < $imageheight) 
-        {
+        if ( $width < $imagewidth && $height < $imageheight) {
             echo '<a name="'.$imagefilename.'" href="'.$imagefilename.'" ><img src="'.$imagefilename.'" title="'.$titre_image.'" alt="'.$imagefilename.'" ></a>';
+            
         } else {
-        // Higher res than width or height variables
+            
+        // If picture is horyzontal, or a square :
             if ($width > $height || $width == $height) 
-            {					
-                // Horyzontal resize rule
+            {				
                 echo '<a name="'.$imagefilename.'" href="'.$imagefilename.'" ><img src="'.$PathToLib.'timthumb.php?src='.$CurrentFolderURL.''.$imagefilename.'&w='.$imagewidth.'" title="'.$titre_image.'" alt="'.$imagefilename.'" ></a>';
-	            } else {		
-	            // Vertical resize rule
+	            
+                } else {
+                    
+	            // It means, picture is vertical
 	            echo '<a name="'.$imagefilename.'" href="'.$imagefilename.'" ><img src="'.$PathToLib.'timthumb.php?src='.$CurrentFolderURL.''.$imagefilename.'&h='.$imageheight.'" title="'.$titre_image.'" alt="'.$imagefilename.'" ></a>';
             }
-        }			
-        // Label of image
+        }
+
+        // Large label of image
         echo '<span class="titre"><a href="#'.$imagefilename.'" ><span class="imageanchor"></span> link</a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="date"> ' . date ("d M Y", filemtime($imagefilename)) . '</span></span> '."\n";
         echo '<a href="'.$CurrentFolderURL.''.$imagefilename.'" title="'.$imagefilename.'" alt=" '.$imagefilename.'" ><span class="download">'.$width.'x'.$height.'px , '.round($imagefileweight, 2).'MB  &nbsp;&nbsp;&nbsp;&nbsp;Download </span></a>'."\n";
-    echo '</div></div>'."\n"."\n";
+        echo '</div></div>'."\n"."\n";
+    
+        }
 }
 
 
