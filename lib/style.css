@@ -108,6 +108,18 @@ a h2{
   padding: 25px 20px 20px 90px;
 }
 
+.folderup{
+  position: relative;
+  text-align: left;
+  font-size: 20px;
+  background: rgba(0,0,0,0.5) url('img/folder-up.png') no-repeat 22px 15px;
+  border-bottom: 2px solid #000;
+  margin: 0 auto 0 auto;
+  max-width: 1000px;
+  min-height: 40px;
+  padding: 25px 20px 20px 90px;
+}
+
 .imagecontainer .download {
 	text-align: right;
     position: absolute;

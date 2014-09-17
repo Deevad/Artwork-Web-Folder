@@ -228,9 +228,11 @@ echo '<h1>'.$cleanProjectName.'</h1>';
     
 	if ($numberofsubdirectories !== 0 ) {
         
-        // Root folders, TODO : might appear later only if a user visit a subfolder.
-        echo '<div class="folder" name="main folder" ><a href="'.$CurrentFolderURL.'index.php" title="main folder" alt="main folder" >'."\n";
-				echo '<b>/</b></a></div>'."\n"."\n";		
+        // Root folders , appears just in case of subfolder
+        if( $_GET ) {
+        echo '<div class="folderup" name="main folder" ><a href="'.$CurrentFolderURL.'index.php" title="main folder" alt="main folder" >'."\n";
+				echo '<b>Back to main folder</b></a></div>'."\n"."\n";
+        }
         
 	    foreach($subdirectories as $subdirectories) {
             
