@@ -68,7 +68,7 @@ $ProjectName = basename($path);
         
         // Security : prohibition of special character to avoid malicious code in the string :
         $subfolder = $_GET["subfolder"];
-        $invalid_characters = array("$", "%", "#", "<", ">", "|");
+        $invalid_characters = array("$", "%", "#", "<", ">", "|", ".");
         $subfolder = str_replace($invalid_characters, "", $subfolder);
         
         // Debug on the Ctrl+U view of HTML 
