@@ -108,6 +108,11 @@ a h2{
   padding: 25px 20px 20px 90px;
 }
 
+.minifolderthumb { 
+float: right;
+margin: 0 15px 0 0;
+}
+
 .folderup{
   position: relative;
   text-align: left;

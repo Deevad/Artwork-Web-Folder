@@ -265,10 +265,24 @@ echo '<h1>'.$cleanProjectName.''.$subfoldername.'</h1>';
         
             foreach($subdirectories as $subdirectories) {
             
-            // exclude directories named lib
-                if ($subdirectories !== "lib" ) {					
+                // exclude directories named lib
+                if ($subdirectories !== "lib" ) {
+                
 				echo '<div class="folder" name="'.$subdirectories.'" ><a href="'.$CurrentFolderURL.'index.php?subfolder='.$subdirectories.'" title="'.$subdirectories.'" alt=" '.$subdirectories.'" >'."\n";
-				echo '<b>'.$subdirectories.'</b></a></div>'."\n"."\n";		
+                echo '<b>'.$subdirectories.'</b></a>'."\n";
+                
+                // display miniature images inside folder, to preview content
+                $pathtoscan = $subdirectories."/";
+                $images = glob($pathtoscan . '*.{jpg,gif,png,jpeg}',GLOB_BRACE);
+                $max_minifolderthumb=10;
+                $count = 0;
+                    foreach($images as $imagelink) {
+                        echo '<div class="minifolderthumb"><a href="'.$CurrentFolderURL.'index.php?subfolder='.$subdirectories.'#'.$imagelink.'" ><img src="'.$PathToLib.'timthumb.php?src='.$CurrentFolderURL.''.$imagelink.'&h=50" title="thumbnail: click to enlarge" alt="'.$imagelink.'" ></a></div>';
+                        $count++;
+                        if($count==$max_minifolderthumb) break; 
+                    }
+                
+                echo '</div>'."\n"."\n";
                 }
             }
         }   
