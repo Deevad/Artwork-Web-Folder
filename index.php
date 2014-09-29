@@ -46,8 +46,8 @@ $ProjectName = basename($path);
 <html>
     <head>
         <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-        <!-- uncomment this line under to stop search engine robot to list your page -->
-        <!-- <meta name="ROBOTS" CONTENT="NOINDEX, NOFOLLOW"> -->
+        <!-- delete this line under to let 'search engine robots' reference your page -->
+        <meta name="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <title><?php echo $ProjectName; ?></title>
 		<link rel="stylesheet" type="text/css" href="<?php echo $PathToLib; ?>/style.css?v=1.0" media="screen" />
     </head>
