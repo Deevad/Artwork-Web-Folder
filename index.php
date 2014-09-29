@@ -274,7 +274,7 @@ echo '<h1>'.$cleanProjectName.''.$subfoldername.'</h1>';
                 // display miniature images inside folder, to preview content
                 $pathtoscan = $subdirectories."/";
                 $images = glob($pathtoscan . '*.{jpg,gif,png,jpeg}',GLOB_BRACE);
-                $max_minifolderthumb=10;
+                $max_minifolderthumb=8;
                 $count = 0;
                     foreach($images as $imagelink) {
                         echo '<div class="minifolderthumb"><a href="'.$CurrentFolderURL.'index.php?subfolder='.$subdirectories.'#'.$imagelink.'" ><img src="'.$PathToLib.'timthumb.php?src='.$CurrentFolderURL.''.$imagelink.'&h=50" title="thumbnail: click to enlarge" alt="'.$imagelink.'" ></a></div>';
