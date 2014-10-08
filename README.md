@@ -13,6 +13,8 @@ A php file listing and serving picture, zip, pdf inside a folder. Require a php 
 * Display date, file weight, image size
 * Generate page title and title for the files automatically.
 * Responsive, image are resized for smartphone, and tablet with smaller screens. 
+* Don't get listed by search engine to keep project private ( anyone with link can access )
+* Subfolder works, and has mini thumbnails
 
 ## Usage :
 
@@ -39,7 +41,7 @@ Files are listed depending alphabetical order, first pictures then files ( to do
 
 ## Troubles/Issues :
 
-Most of the issues can come from *Timthumb*, the librarie I use for generating the thumbnail.
+Most of the issues can come from *Timthumb*, the library I use for generating the thumbnails.
 
 I ship a modified version of timthumb ( configuration changed only ) to use the /tmp/ folder of the Linux server as a place to cache images. With this method, I avoid having to download a cache folder when I backup my server ; but If this method doesn't work on your server ; you probably will prefer to setup manually a cache folder (l.40 on lib/timthumb.php ). You can see how the default timthumb last SVN file is setup here : [https://code.google.com/p/timthumb/source/browse/trunk/timthumb.php](https://code.google.com/p/timthumb/source/browse/trunk/timthumb.php) ; using './cache' . If you decide to use a cache folder, be sure to apply a 777 permission to it ( or 755 should be suffisent too ). Other modifications I made on the version I ship : max imagesize, max imageweight and a better sharpening filter in my opinion.
 
